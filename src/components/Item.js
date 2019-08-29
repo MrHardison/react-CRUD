@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Context } from '../context'
 
 const Item = ({ item }) => {
-  const { triggerEdit, deleteItem } = useContext(Context)
+  const { deleteItem } = useContext(Context)
   const { id, name, name2, age } = item
 
   return (
@@ -12,7 +12,7 @@ const Item = ({ item }) => {
       Name2: <span>{name2}</span>
       {' | '}
       Age: <span>{age}</span>
-      <button className='green' onClick={() => triggerEdit(id)}>
+      <button className='green' onClick={}>
         Edit
       </button>{' '}
       <button className='red' onClick={() => deleteItem(id)}>

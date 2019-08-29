@@ -4,6 +4,7 @@ import { Form } from './components/Form'
 import { Context } from './context'
 
 const App = () => {
+  const [editing, setEditing] = useState(false)
   const [list, setList] = useState([
     {
       id: 1,
@@ -24,11 +25,6 @@ const App = () => {
       age: 18
     }
   ])
-  const [editedItem, setEditedItem] = useState(null)
-
-  const triggerEdit = id => {
-    setEditedItem(list.find(i => i.id === id))
-  }
 
   const addItem = item => {
     setList([...list, item])
@@ -41,13 +37,17 @@ const App = () => {
   }
 
   return (
-    <Context.Provider value={{ triggerEdit, deleteItem }}>
+    <Context.Provider value={{ deleteItem }}>
       <div className='container'>
         <h1>CRUD App with Hooks</h1>
         <div className='flex-row'>
           <div className='flex-large'>
             <h2>Form</h2>
-            <Form addItem={addItem} editedItem={editedItem} editItem={editItem}/>
+            <Form
+              addItem={addItem}
+              editedItem={editedItem}
+              editItem={editItem}
+            />
           </div>
           <div className='flex-large'>
             <h2>List</h2>

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 
-const Form = ({ addItem }) => {
+const EditForm = ({ editedItem, editItem }) => {
   const initial = {
     id: null,
     name: '',
     name2: '',
     age: ''
   }
-  const [data, setData] = useState(initial)
+  const [data, setData] = useState(editedItem)
 
-  const handleAdd = e => {
+  const handleEdit = e => {
     e.preventDefault()
     if (data.name.length && data.name2.length && data.age.length) {
-      addItem({ ...data, id: Date.now() })
+      editItem(data)
       setData(initial)
     }
   }
@@ -34,9 +34,9 @@ const Form = ({ addItem }) => {
       />
       <label>Age</label>
       <input name='age' type='text' value={data.age} onChange={handleInput} />
-      <button onClick={handleAdd}>Edit</button>
+      <button onClick={handleEdit}>Edit</button>
     </form>
   )
 }
 
-export { Form }
+export { EditForm }
